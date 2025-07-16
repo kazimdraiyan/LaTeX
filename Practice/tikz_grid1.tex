@@ -1,0 +1,19 @@
+\documentclass{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{tikz}
+
+\tikzset{help lines/.style={very thin}}
+\tikzset{
+    my grid/.style={help lines,color=#1!50},
+    my grid/.default=gray
+}
+
+\begin{document}
+\begin{tikzpicture}[scale=3]
+    \draw[step=0.5,my grid] (-1.4,-1.4) grid (1.4,1.4);
+    \draw (-1.5,0) -- (1.5,0);
+    \draw (0, 1.5) -- (0,-1.5);
+    \draw (0,0) circle [radius=1];  
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,59 @@
+\documentclass[12pt]{article}
+\pagestyle{empty}
+
+% How to make the margin smaller?
+\usepackage[a4paper, margin=1in]{geometry}
+
+% How to add displaystyle to all inline math by default?
+\everymath{\displaystyle}
+
+\newcommand{\cosec}{\mathop{\mathrm{cosec}}}
+\renewcommand{\labelenumi}{\arabic{enumi}.}
+\renewcommand{\labelenumii}{\arabic{enumii})}
+
+\begin{document}
+
+\begin{enumerate}
+    \setcounter{enumi}{6}
+
+    \item
+    \begin{enumerate}
+        \item $\frac{\sin A}{\cosec A} + \frac{\cos A}{\sec A} = 1$
+        \item $\frac{\sec A}{\cos A} - \frac{\tan A}{\cot A} = 1$
+        \item $\frac{1}{1 + \sin^2 A} + \frac{1}{1 + \cosec^2 A}= 1$
+    \end{enumerate}
+    
+    \item
+    \begin{enumerate}
+        \item $\frac{\tan A}{1 - \cot A} + \frac{\cot A}{1 - \tan A} = \sec A \cosec A + 1$
+        \item $\frac{1}{1 + \tan^2 A} + \frac{1}{1 + \cot^2 A} = 1$
+    \end{enumerate}
+
+    \item $\frac{\cos A}{1 - \tan A} + \frac{\sin A}{1 - \cot A} = \sin A + \cos A$
+
+    \item $\tan A \sqrt{1 - \sin^2 A} = \sin A$
+    
+    \item $\frac{\sec A + \tan A}{\cosec A + \cot A} = \frac{\cosec A - \cot A}{\sec A - \tan A}$
+    
+    \item $\frac{\cosec A}{\cosec A - 1} + \frac{\cosec A}{\cosec A + 1} = 2\sec^2 A$
+    
+    \item $\frac{1}{1 + \sin A} + \frac{1}{1 - \sin A} = 2\sec^2 A$
+    
+    \item $\frac{1}{\cosec A - 1} - \frac{1}{\cosec A + 1} = 2\tan^2 A$
+    
+    \item $\frac{\sin A}{1 - \cos A} + \frac{1 - \cos A}{\sin A} = 2\cosec A$
+    
+    \item $\frac{\tan A}{\sec A + 1} - \frac{\sec A - 1}{\tan A} = 0$
+    
+    \item $(\tan\theta + \sec \theta)^2 = \frac{1 + \sin \theta}{1 - \sin \theta}$
+    
+    \item $\frac{\cot A + \tan B}{\cot B + \tan A} = \cot A \cdot \tan B$
+    
+    \item $\sqrt{\frac{1 - \sin A}{1 + \sin A}} = \sec A - \tan A$
+    
+    \item $\sqrt{\frac{\sec A + 1}{\sec A - 1}} = \cot A + \cosec A$
+    
+    \item If $\cos A + \sin A = \sqrt{2} \cos A$, prove that, $\cos A - \sin A = \sqrt{2} \sin A$
+\end{enumerate}
+
+\end{document}

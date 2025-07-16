@@ -1,0 +1,171 @@
+\documentclass[12pt]{article}
+
+\usepackage[a4paper, hmargin=0.8in, vmargin=1.2in]{geometry}
+\usepackage{float}
+\usepackage{steinmetz}
+\usepackage{siunitx}
+\usepackage{multicol}
+\usepackage{circuitikz}
+
+\renewcommand{\figurename}{Fig}
+
+\parindent 0pt
+
+\begin{document}
+
+\begin{center}
+	\begin{LARGE}
+		\textbf{Verification of KCL for AC Circuits}
+
+		\vspace{20pt}
+		\textbf{EXP 8 Report}
+	\end{LARGE}
+\end{center}
+
+\begin{Large}
+	\vspace{40pt}
+	\textbf{Course No: EEE 164}
+\end{Large}
+
+\begin{large}
+	\vspace{40pt}
+	\begin{minipage}{0.48\textwidth}
+		Experiment No: 08\\
+		Department: CSE\\
+		Sec: B2
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.48\textwidth}
+		\textbf{Student ID: 2405103}\\
+		Name: Kazi Md. Raiyan\\
+		Lab Group No: 03
+	\end{minipage}
+
+	\vfill
+
+	\begin{minipage}[t]{0.48\textwidth}
+		Date of Performance: 12.07.2025\\
+		Date of Submission: % TODO: Add submission date.
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.48\textwidth}
+		\textbf{Partners' Student ID:}\\
+		2405104\\
+		2405105\\
+		2405106\\
+		2405107\\
+		2405108
+	\end{minipage}
+    \vspace{80pt}
+
+	\newpage
+	\section{Objectives}
+	This experiment is designed to:
+	\begin{itemize}
+		\item Verify KCL for AC circuits.
+	\end{itemize}
+
+	Upon successful completion of this experiment, we should be able to:
+	\begin{itemize}
+		\item Construct RLC circuits.
+		\item Understand the validity of analytical methods used in theory.
+	\end{itemize}
+
+	\section{Apparatus}
+	\begin{enumerate}
+		\item Function Generator
+		\item Oscilloscope
+		\item Multimeter
+		\item Two $ \SI{100}{\ohm} $ resistors
+		\item One $ \SI{120}{\ohm} $ resistor
+		\item One $ \SI{1}{\micro\farad} $ capacitor
+		\item Breadboard
+	\end{enumerate}
+	The ratings of the equipment supplied were checked.
+
+	\section{Experimental Setup}
+	\begin{figure}[H]
+		\centering
+		\begin{circuitikz}[american, voltage shift=0.8]
+			\draw
+			(0,0) to[R, l={$ R_1 = \SI{98.5}{\ohm} $ }, i>^=$ \mathbf{I} $, v_=$ \mathbf{V}_{R_1} $] (4,0) -- (8,0);
+			\draw (0,0) to[vsourcesin, v_={$ \textbf{V} = 5\phase{0^\circ} \SI{}{V} $}] (0,-5);
+			\draw (4,0) to[R, l={$ R_3 = \SI{119}{\ohm} $}, i>^=$ \mathbf{I}_2 $, v_=$ \mathbf{V}_{R_3} $] (4,-5);
+			\draw (8,0) to[R, l={$ R_2 = \SI{99}{\ohm} $}, i>^=$ \mathbf{I}_1 $, v_=$ \mathbf{V}_{R_2} $] (8,-3) to[C, l={$ C = \SI{1}{\micro\farad} $}] (8,-5);
+			\draw (0,-5) -- (8,-5);
+			\draw (0,-5) node[ground] {};
+
+            \draw (0,0) to[short, -*] (-1,1) node[left] {Channel 1};
+            \draw (8,0) to[short, -*] (9,1) node[right] {Channel 2};
+            \draw (0, -5) to[short, -*] (-1,-6) node[left] {Ref};
+            
+		\end{circuitikz}
+		\caption{Circuit 1}
+		\label{fig:fig1}
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\begin{circuitikz}[american]
+			\draw (0,0) to[short, i>^=$ \mathbf{I} $] (4,0) -- (8,0);
+			\draw (0,0) to[vsourcesin, v_={$ \mathbf{V} = 5\phase{0^\circ} \SI{}{V} $}] (0,-5);
+			\draw (4,0) to[R, l={$ R_3 = \SI{119}{\ohm} $}, i>^=$ \mathbf{I}_2 $, v_=$ \mathbf{V}_{R_3} $] (4,-5);
+			\draw (8,0) to[R, l={$ R_2 = \SI{99}{\ohm} $}, i>^=$ \mathbf{I}_1 $, v_=$ \mathbf{V}_{R_2} $] (8,-3) to[C, l={$ C = \SI{1}{\micro\farad} $}] (8,-5);
+			\draw (0,-5) to[R, l={$ R_1 = \SI{98.5}{\ohm} $}, v_<=$ \mathbf{V}_{R_1} $] (4,-5) -- (8,-5);
+			\draw (0,-5) node[ground] {};
+
+            \draw (0,0) to[short, -*] (-1,1) node[left] {Channel 1};
+            \draw (8,-5) to[short, -*] (9,-6) node[right] {Channel 2};
+            \draw (0, -5) to[short, -*] (-1,-6) node[left] {Ref};
+		\end{circuitikz}
+		\caption{Circuit 2}
+		\label{fig:fig2}
+	\end{figure}
+	\section{Procedure}
+	\begin{enumerate}
+		\item The resistance of the resistors was measured with the help of the multimeter and the values were written down the table below.
+		\item The frequency, $ f $ of the function generator was set at $ \SI{1}{\kilo\hertz} $. The power source was not turned on yet.
+		\item At first, circuit was setup as shown in Fig~\ref{fig:fig1}.
+		\item Then the magnitude and phase of the voltage $ \mathbf{V}_{R_3} $ were determined using the multimeter and the oscilloscope respectively.
+		\item Then the phasor currents $ \mathbf{I}_1 = \mathbf{I}_{R_2} = \mathbf{I}_C = \frac{\mathbf{V}_{R_3}}{Z_{RC}} $ and $ \mathbf{I}_2 = \frac{\mathbf{V}_{R_3}}{R_3} $ were determined mathematically, where $ Z_{RC} $ is the equivalent impedance of $ R_2 $ and $ C $.
+		\item Then the circuit was setup as shown in Fig~\ref{fig:fig2}.
+		\item Then the magnitude and phase of the voltage $ \mathbf{V}_{R_1} $ were determined using the multimeter and the oscilloscope respectively.
+		\item Then the phasor current $ \mathbf{I} = \mathbf{I}_{R_1} = \frac{\mathbf{V}_{R_1}}{R_1} $ was determined mathematically.
+		\item Then the phasor voltage $ \mathbf{V}_{R_2} $ was determined mathematically.
+		\item The steps 3-9 were repeated for $ \SI{500}{hertz} $ and $ \SI{2}{\kilo\hertz} $ source frequency.
+		\item The phasor values of $ \mathbf{I} $, $ \mathbf{I}_1 $ and $ \mathbf{I}_2 $ were determined theoretically for the three frequencies and compared to the experimentally found values.
+	\end{enumerate}
+
+	\section{Data Collection}
+	\textbf{Measurements:}\\
+	\begin{minipage}{0.3\textwidth}
+		$ R_1 = \SI{98.5}{\ohm} $
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.3\textwidth}
+		$ R_2 = \SI{99}{\ohm} $
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.3\textwidth}
+		$ R_3 = \SI{119}{\ohm} $
+	\end{minipage}
+
+	\vspace{20pt}
+	\textbf{Table:}\\[8pt]
+	\begin{tabular}{ |c|c|c|c|c|c|c|c| }
+		\hline
+		$f (\SI{}{\kilo\hertz}) $ & $ \mathbf{V}_{R_2} (\SI{}{V}) $ & $ \mathbf{V}_{R_3} (\SI{}{V}) $ & $ \mathbf{I}_1 (\SI{}{\milli\A)} $ & $ \mathbf{I}_2 (\SI{}{\milli\A)} $ & $ \mathbf{V}_{R_1} (\SI{}{V}) $ & $ \mathbf{I} (\SI{}{\milli\A)} $ & $ \mathbf{I}_1 + \mathbf{I}_2 (\SI{}{\milli\A)} $\\
+        \hline
+        % TODO: Complete the table.
+        % TODO: Bug: The table overflows when the values are inserted.
+        0.5 &\\
+        \hline
+        1   &\\
+        \hline
+        2   &\\
+        \hline
+	\end{tabular}
+
+    \section{Report}
+\end{large}
+
+\end{document}
