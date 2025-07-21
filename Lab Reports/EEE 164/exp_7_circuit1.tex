@@ -1,0 +1,23 @@
+\documentclass[convert]{standalone}
+
+\usepackage{circuitikz}
+\usepackage{steinmetz}
+\usepackage{siunitx}
+
+\begin{document}
+\resizebox{\textwidth}{!}{
+	\centering
+	\begin{circuitikz}[american, voltage shift=0.8]
+		\draw
+		(0,0) to[R, l={$ R_1 = \SI{100}{\ohm} $ }, i>^=$ \mathbf{I} $, v_=$ \mathbf{V}_{R_1} $] (4,0) to[C, l={$ C = \SI{1}{\micro\farad} $}] (8,0);
+		\draw (0,0) to[vsourcesin, v_={$ \textbf{V} = 5\phase{0^\circ} \SI{}{\V} $}] (0,-5);
+		\draw (8,0) to[R, l={$ R_2 = \SI{100}{\ohm} $}, v_=$ \mathbf{V}_{R_2} $] (8,-5);
+		\draw (0,-5) -- (8,-5);
+		\draw (0,-5) node[ground] {};
+
+		\draw (0,0) to[short, -*] (-1,1) node[left] {Channel 1};
+		\draw (8,0) to[short, -*] (9,1) node[right] {Channel 2};
+		\draw (0, -5) to[short, -*] (-1,-6) node[left] {Ref};
+	\end{circuitikz}
+}
+\end{document}
